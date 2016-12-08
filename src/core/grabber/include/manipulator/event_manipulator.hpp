@@ -33,22 +33,18 @@ public:
                                 memset(counter_, 0, sizeof(counter_));
 
                                 // For user, rewrite this config, if you need.
-                                ck2ck_[ComplexKey(false, false, false, false, false, true, false, krbn::key_code(4))] = ComplexKey(true, false, false, false, false, false, false, krbn::key_code::left_arrow);
-                                ck2ck_[ComplexKey(false, false, false, false, false, true, false, krbn::key_code(8))] = ComplexKey(true, false, false, false, false, false, false, krbn::key_code::right_arrow);
-                                
-                                ck2ck_[ComplexKey(false, false, false, false, false, true, false, krbn::key_code(9))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::right_arrow);
-                                ck2ck_[ComplexKey(false, false, false, false, false, true, false, krbn::key_code(5))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::left_arrow);
-                                ck2ck_[ComplexKey(false, false, false, false, false, true, false, krbn::key_code(19))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::up_arrow);
-                                ck2ck_[ComplexKey(false, false, false, false, false, true, false, krbn::key_code(17))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::down_arrow);
-                                
-                                ck2ck_[ComplexKey(false, false, false, false, false, true, false, krbn::key_code(25))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::page_down);
-                                ck2ck_[ComplexKey(false, false, false, false, false, true, false, krbn::key_code(20))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::page_up);
-                                
-                                ck2ck_[ComplexKey(false, false, false, false, false, true, false, krbn::key_code(7))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::delete_forward);
-                                ck2ck_[ComplexKey(false, false, false, false, false, true, false, krbn::key_code(11))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code(42));
-                                
-                                ck2ck_[ComplexKey(true, false, false, false, false, false, false, krbn::key_code(28))] = ComplexKey(true, false, false, true, false, false, false, krbn::key_code(29));
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(28))] = ComplexKey(true, false, false, true, false, false, false, krbn::key_code(29));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(7))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::down_arrow);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(8))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::up_arrow);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(22))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::left_arrow);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(9))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::right_arrow);
+
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(29))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code(41));
+
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(26))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code(42));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(21))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::delete_forward);
+
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(4))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::home);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(10))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::end);
                                 //=== takahasix ============================================
                                 //=== takahasix ============================================
                                 //=== takahasix ============================================

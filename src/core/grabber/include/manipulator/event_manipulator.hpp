@@ -250,66 +250,66 @@ public:
           ComplexKey dst = shikakariSrc_;
           
           // Clear src's key.
-          post_key(src.key_, src.key_, false, false);
+          post_key(src.key_, src.key_, keyboard_type, false, false);
           counter_[(uint32_t)src.key_]--;
           
           // Clear src's modifier.
           if(src.commandLeft_){
-              post_modifier_flag_event(krbn::key_code(227), false);
+              post_modifier_flag_event(krbn::key_code(227), keyboard_type, false);
               counter_[227]--;
           }
           if(src.commandRight_){
-              post_modifier_flag_event(krbn::key_code(231), false);
+              post_modifier_flag_event(krbn::key_code(231), keyboard_type, false);
               counter_[231]--;
           }
           if(src.option_){
-              post_modifier_flag_event(krbn::key_code(226), false);
+              post_modifier_flag_event(krbn::key_code(226), keyboard_type, false);
               counter_[226]--;
           }
           if(src.shiftLeft_){
-              post_modifier_flag_event(krbn::key_code(225), false);
+              post_modifier_flag_event(krbn::key_code(225), keyboard_type, false);
               counter_[225]--;
           }
           if(src.shiftRight_){
-              post_modifier_flag_event(krbn::key_code(229), false);
+              post_modifier_flag_event(krbn::key_code(229), keyboard_type, false);
               counter_[229]--;
           }
           if(src.control_){
-              post_modifier_flag_event(krbn::key_code(224), false);
+              post_modifier_flag_event(krbn::key_code(224), keyboard_type, false);
               counter_[224]--;
           }
           if(src.fn_){
-              post_modifier_flag_event(krbn::key_code(4098), false);
+              post_modifier_flag_event(krbn::key_code(4098), keyboard_type, false);
               counter_[4098]--;
           }
           
           // Set dst's modifier.
           if(dst.commandLeft_){
-              post_modifier_flag_event(krbn::key_code(227), true);
+              post_modifier_flag_event(krbn::key_code(227), keyboard_type, true);
               counter_[227]++;
           }
           if(dst.commandRight_){
-              post_modifier_flag_event(krbn::key_code(231), true);
+              post_modifier_flag_event(krbn::key_code(231), keyboard_type, true);
               counter_[231]++;
           }
           if(dst.option_){
-              post_modifier_flag_event(krbn::key_code(226), true);
+              post_modifier_flag_event(krbn::key_code(226), keyboard_type, true);
               counter_[226]++;
           }
           if(dst.shiftLeft_){
-              post_modifier_flag_event(krbn::key_code(225), true);
+              post_modifier_flag_event(krbn::key_code(225), keyboard_type, true);
               counter_[225]++;
           }
           if(dst.shiftRight_){
-              post_modifier_flag_event(krbn::key_code(229), true);
+              post_modifier_flag_event(krbn::key_code(229), keyboard_type, true);
               counter_[229]++;
           }
           if(dst.control_){
-              post_modifier_flag_event(krbn::key_code(224), true);
+              post_modifier_flag_event(krbn::key_code(224), keyboard_type, true);
               counter_[224]++;
           }
           if(dst.fn_){
-              post_modifier_flag_event(krbn::key_code(4098), true);
+              post_modifier_flag_event(krbn::key_code(4098), keyboard_type, true);
               counter_[4098]++;
           }
           
@@ -325,61 +325,61 @@ public:
               if(src==ck){
                   // Clear src's modifier.
                   if(src.commandLeft_){
-                      post_modifier_flag_event(krbn::key_code(227), false);
+                      post_modifier_flag_event(krbn::key_code(227), keyboard_type, false);
                       counter_[227]--;
                   }
                   if(src.commandRight_){
-                      post_modifier_flag_event(krbn::key_code(231), false);
+                      post_modifier_flag_event(krbn::key_code(231), keyboard_type, false);
                       counter_[231]--;
                   }
                   if(src.option_){
-                      post_modifier_flag_event(krbn::key_code(226), false);
+                      post_modifier_flag_event(krbn::key_code(226), keyboard_type, false);
                       counter_[226]--;
                   }
                   if(src.shiftLeft_){
-                      post_modifier_flag_event(krbn::key_code(225), false);
+                      post_modifier_flag_event(krbn::key_code(225), keyboard_type, false);
                       counter_[225]--;
                   }
                   if(src.shiftRight_){
-                      post_modifier_flag_event(krbn::key_code(229), false);
+                      post_modifier_flag_event(krbn::key_code(229), keyboard_type, false);
                       counter_[229]--;
                   }
                   if(src.control_){
-                      post_modifier_flag_event(krbn::key_code(224), false);
+                      post_modifier_flag_event(krbn::key_code(224), keyboard_type, false);
                       counter_[224]--;
                   }
                   if(src.fn_){
-                      post_modifier_flag_event(krbn::key_code(4098), false);
+                      post_modifier_flag_event(krbn::key_code(4098), keyboard_type, false);
                       counter_[4098]--;
                   }
                   
                   // Set dst's modifier.
                   if(dst.commandLeft_){
-                      post_modifier_flag_event(krbn::key_code(227), true);
+                      post_modifier_flag_event(krbn::key_code(227), keyboard_type, true);
                       counter_[227]++;
                   }
                   if(dst.commandRight_){
-                      post_modifier_flag_event(krbn::key_code(231), true);
+                      post_modifier_flag_event(krbn::key_code(231), keyboard_type, true);
                       counter_[231]++;
                   }
                   if(dst.option_){
-                      post_modifier_flag_event(krbn::key_code(226), true);
+                      post_modifier_flag_event(krbn::key_code(226), keyboard_type, true);
                       counter_[226]++;
                   }
                   if(dst.shiftLeft_){
-                      post_modifier_flag_event(krbn::key_code(225), true);
+                      post_modifier_flag_event(krbn::key_code(225), keyboard_type, true);
                       counter_[225]++;
                   }
                   if(dst.shiftRight_){
-                      post_modifier_flag_event(krbn::key_code(229), true);
+                      post_modifier_flag_event(krbn::key_code(229), keyboard_type, true);
                       counter_[229]++;
                   }
                   if(dst.control_){
-                      post_modifier_flag_event(krbn::key_code(224), true);
+                      post_modifier_flag_event(krbn::key_code(224), keyboard_type, true);
                       counter_[224]++;
                   }
                   if(dst.fn_){
-                      post_modifier_flag_event(krbn::key_code(4098), true);
+                      post_modifier_flag_event(krbn::key_code(4098), keyboard_type, true);
                       counter_[4098]++;
                   }
                   

@@ -30,21 +30,98 @@ public:
                                 //=== takahasix ============================================
                                 //=== takahasix ============================================
                                 //=== takahasix ============================================
-                                memset(counter_, 0, sizeof(counter_));
-
                                 // For user, rewrite this config, if you need.
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(7))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::down_arrow);
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(8))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::up_arrow);
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(22))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::left_arrow);
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(9))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::right_arrow);
 
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(29))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code(41));
+                                // navigation keys
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(7))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::down_arrow);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(8))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::up_arrow);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(22))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::left_arrow);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(9))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::right_arrow);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(4))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::home);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(10))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::end);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(20))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::page_up);
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(23))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::page_down);
 
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(26))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code(42));
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(21))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::delete_forward);
+                                // escape
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(29))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(41));
 
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(4))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::home);
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(10))] = ComplexKey(false, false, false, false, false, false, false, krbn::key_code::end);
+                                // deletion
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(26))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(42));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(21))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::delete_forward);
+
+                                // num pad
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(16))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(89));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(54))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(90));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(55))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(91));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(13))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(92));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(14))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(93));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(15))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(94));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(24))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(95));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(12))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(96));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(18))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(97));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(44))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(98));
+                                // divide
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(38))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(103));
+                                // multiply
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(39))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(84));
+                                // subtract
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(45))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(85));
+                                // add
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(19))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(86));
+                                // enter
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(25))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(40));
+                                // decimal point
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(52))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(55));
+                                // comma
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(51))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(54));
+                                // colon
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(17))] =
+                                    ComplexKey(false, false, true, false, false, false, false, krbn::key_code(51));
+                                // semicolon
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(56))] =
+                                    ComplexKey(false, false, true, false, false, false, false, krbn::key_code(56));
+
+                                // tab
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(27))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(43));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(37))] =
+                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code(43));
+
+                                // undo
+                                //ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(5))] =
+                                    //ComplexKey(false, false, false, false, false, false, false, krbn::key_code(5));
+
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(35))] =
+                                    ComplexKey(false, false, true, true, false, false, false, krbn::key_code(29));
+
                                 //=== takahasix ============================================
                                 //=== takahasix ============================================
                                 //=== takahasix ============================================

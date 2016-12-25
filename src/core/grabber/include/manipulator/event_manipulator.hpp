@@ -324,66 +324,51 @@ public:
           
           // Clear src's key.
           post_key(src.key_, src.key_, keyboard_type, false, false);
-          counter_[(uint32_t)src.key_]--;
           
           // Clear src's modifier.
           if(src.commandLeft_){
               post_modifier_flag_event(krbn::key_code(227), keyboard_type, false);
-              counter_[227]--;
           }
           if(src.commandRight_){
               post_modifier_flag_event(krbn::key_code(231), keyboard_type, false);
-              counter_[231]--;
           }
           if(src.option_){
               post_modifier_flag_event(krbn::key_code(226), keyboard_type, false);
-              counter_[226]--;
           }
           if(src.shiftLeft_){
               post_modifier_flag_event(krbn::key_code(225), keyboard_type, false);
-              counter_[225]--;
           }
           if(src.shiftRight_){
               post_modifier_flag_event(krbn::key_code(229), keyboard_type, false);
-              counter_[229]--;
           }
           if(src.control_){
               post_modifier_flag_event(krbn::key_code(224), keyboard_type, false);
-              counter_[224]--;
           }
           if(src.fn_){
               post_modifier_flag_event(krbn::key_code(4098), keyboard_type, false);
-              counter_[4098]--;
           }
           
           // Set dst's modifier.
           if(dst.commandLeft_){
               post_modifier_flag_event(krbn::key_code(227), keyboard_type, true);
-              counter_[227]++;
           }
           if(dst.commandRight_){
               post_modifier_flag_event(krbn::key_code(231), keyboard_type, true);
-              counter_[231]++;
           }
           if(dst.option_){
               post_modifier_flag_event(krbn::key_code(226), keyboard_type, true);
-              counter_[226]++;
           }
           if(dst.shiftLeft_){
               post_modifier_flag_event(krbn::key_code(225), keyboard_type, true);
-              counter_[225]++;
           }
           if(dst.shiftRight_){
               post_modifier_flag_event(krbn::key_code(229), keyboard_type, true);
-              counter_[229]++;
           }
           if(dst.control_){
               post_modifier_flag_event(krbn::key_code(224), keyboard_type, true);
-              counter_[224]++;
           }
           if(dst.fn_){
               post_modifier_flag_event(krbn::key_code(4098), keyboard_type, true);
-              counter_[4098]++;
           }
           
           shikakari_ = false;
@@ -391,7 +376,14 @@ public:
       
       
       if(pressed==true && krbn::types::get_modifier_flag(to_key_code)==krbn::modifier_flag::zero){
-          ComplexKey ck(counter_, to_key_code);
+          const bool cmdLeft = modifier_flag_manager_.pressed(krbn::modifier_flag::left_command);
+          const bool cmdRight = modifier_flag_manager_.pressed(krbn::modifier_flag::right_command);
+          const bool opt = modifier_flag_manager_.pressed(krbn::modifier_flag::left_option) || modifier_flag_manager_.pressed(krbn::modifier_flag::right_option);
+          const bool shiftLeft = modifier_flag_manager_.pressed(krbn::modifier_flag::left_shift);
+          const bool shiftRight = modifier_flag_manager_.pressed(krbn::modifier_flag::right_shift);
+          const bool ctrl = modifier_flag_manager_.pressed(krbn::modifier_flag::left_control) || modifier_flag_manager_.pressed(krbn::modifier_flag::right_control);
+          const bool fn = modifier_flag_manager_.pressed(krbn::modifier_flag::fn);
+          ComplexKey ck(cmdLeft, cmdRight, opt, shiftLeft, shiftRight, ctrl, fn, to_key_code);
           for(std::map<ComplexKey, ComplexKey>::iterator it=ck2ck_.begin(); it!=ck2ck_.end(); it++){
               ComplexKey src = it->first;
               ComplexKey dst = it->second;
@@ -399,61 +391,47 @@ public:
                   // Clear src's modifier.
                   if(src.commandLeft_){
                       post_modifier_flag_event(krbn::key_code(227), keyboard_type, false);
-                      counter_[227]--;
                   }
                   if(src.commandRight_){
                       post_modifier_flag_event(krbn::key_code(231), keyboard_type, false);
-                      counter_[231]--;
                   }
                   if(src.option_){
                       post_modifier_flag_event(krbn::key_code(226), keyboard_type, false);
-                      counter_[226]--;
                   }
                   if(src.shiftLeft_){
                       post_modifier_flag_event(krbn::key_code(225), keyboard_type, false);
-                      counter_[225]--;
                   }
                   if(src.shiftRight_){
                       post_modifier_flag_event(krbn::key_code(229), keyboard_type, false);
-                      counter_[229]--;
                   }
                   if(src.control_){
                       post_modifier_flag_event(krbn::key_code(224), keyboard_type, false);
-                      counter_[224]--;
                   }
                   if(src.fn_){
                       post_modifier_flag_event(krbn::key_code(4098), keyboard_type, false);
-                      counter_[4098]--;
                   }
                   
                   // Set dst's modifier.
                   if(dst.commandLeft_){
                       post_modifier_flag_event(krbn::key_code(227), keyboard_type, true);
-                      counter_[227]++;
                   }
                   if(dst.commandRight_){
                       post_modifier_flag_event(krbn::key_code(231), keyboard_type, true);
-                      counter_[231]++;
                   }
                   if(dst.option_){
                       post_modifier_flag_event(krbn::key_code(226), keyboard_type, true);
-                      counter_[226]++;
                   }
                   if(dst.shiftLeft_){
                       post_modifier_flag_event(krbn::key_code(225), keyboard_type, true);
-                      counter_[225]++;
                   }
                   if(dst.shiftRight_){
                       post_modifier_flag_event(krbn::key_code(229), keyboard_type, true);
-                      counter_[229]++;
                   }
                   if(dst.control_){
                       post_modifier_flag_event(krbn::key_code(224), keyboard_type, true);
-                      counter_[224]++;
                   }
                   if(dst.fn_){
                       post_modifier_flag_event(krbn::key_code(4098), keyboard_type, true);
-                      counter_[4098]++;
                   }
                   
                   // Replace to_key_code with dst's key.
@@ -469,14 +447,6 @@ public:
       }
       
       
-      if(pressed){
-          counter_[(uint32_t)to_key_code]++;
-      }else{
-          if(counter_[(uint32_t)to_key_code]==0){
-              return;
-          }
-          counter_[(uint32_t)to_key_code]--;
-      }
       //=== takahasix ============================================
       //=== takahasix ============================================
       //=== takahasix ============================================
@@ -843,17 +813,6 @@ private:
             key_ = key;
         }
         
-        ComplexKey(int* counter, krbn::key_code key){
-            commandLeft_ = counter[227] != 0;
-            commandRight_ = counter[231] != 0;
-            option_ = counter[226] != 0;
-            shiftLeft_ = counter[225] != 0;
-            shiftRight_ = counter[229] != 0;
-            control_ = counter[224] != 0;
-            fn_ = counter[4098] != 0;
-            key_ = key;
-        }
-        
         bool operator<(const ComplexKey &ck) const {
             if(key_ < ck.key_){
                 return true;
@@ -919,11 +878,6 @@ private:
         }
         
         
-        bool isHit(int* counter, krbn::key_code key){
-            ComplexKey ck(counter, key);
-            return *this==ck;
-        }
-        
         bool commandLeft_;
         bool commandRight_;
         bool option_;
@@ -935,7 +889,6 @@ private:
     };
     
     
-    int counter_[5000];
     std::map<ComplexKey, ComplexKey> ck2ck_;
     bool shikakari_ = false;
     ComplexKey shikakariSrc_;

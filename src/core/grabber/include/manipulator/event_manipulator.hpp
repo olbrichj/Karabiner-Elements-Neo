@@ -329,14 +329,14 @@ public:
       }
       
       
+      const bool cmdLeft = modifier_flag_manager_.pressed(krbn::modifier_flag::left_command);
+      const bool cmdRight = modifier_flag_manager_.pressed(krbn::modifier_flag::right_command);
+      const bool opt = modifier_flag_manager_.pressed(krbn::modifier_flag::left_option) || modifier_flag_manager_.pressed(krbn::modifier_flag::right_option);
+      const bool shiftLeft = modifier_flag_manager_.pressed(krbn::modifier_flag::left_shift);
+      const bool shiftRight = modifier_flag_manager_.pressed(krbn::modifier_flag::right_shift);
+      const bool ctrl = modifier_flag_manager_.pressed(krbn::modifier_flag::left_control) || modifier_flag_manager_.pressed(krbn::modifier_flag::right_control);
+      const bool fn = modifier_flag_manager_.pressed(krbn::modifier_flag::fn);
       if(pressed==true && krbn::types::get_modifier_flag(to_key_code)==krbn::modifier_flag::zero){
-          const bool cmdLeft = modifier_flag_manager_.pressed(krbn::modifier_flag::left_command);
-          const bool cmdRight = modifier_flag_manager_.pressed(krbn::modifier_flag::right_command);
-          const bool opt = modifier_flag_manager_.pressed(krbn::modifier_flag::left_option) || modifier_flag_manager_.pressed(krbn::modifier_flag::right_option);
-          const bool shiftLeft = modifier_flag_manager_.pressed(krbn::modifier_flag::left_shift);
-          const bool shiftRight = modifier_flag_manager_.pressed(krbn::modifier_flag::right_shift);
-          const bool ctrl = modifier_flag_manager_.pressed(krbn::modifier_flag::left_control) || modifier_flag_manager_.pressed(krbn::modifier_flag::right_control);
-          const bool fn = modifier_flag_manager_.pressed(krbn::modifier_flag::fn);
           ComplexKey src(cmdLeft, cmdRight, opt, shiftLeft, shiftRight, ctrl, fn, to_key_code);
           if (ck2ck_.count(src) > 0) {
               ComplexKey dst = ck2ck_.at(src);
@@ -366,6 +366,12 @@ public:
               shikakariDst_ = dst;
               shikakari_ = true;
           }
+      } else if (shiftLeft && to_key_code == krbn::key_code(229)) {
+          post_modifier_flag_event(krbn::key_code(229), keyboard_type, pressed);
+          to_key_code = krbn::key_code::caps_lock;
+      } else if (shiftRight && to_key_code == krbn::key_code(225)) {
+          post_modifier_flag_event(krbn::key_code(225), keyboard_type, pressed);
+          to_key_code = krbn::key_code::caps_lock;
       }
       
       

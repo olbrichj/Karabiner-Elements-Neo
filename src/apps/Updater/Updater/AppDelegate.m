@@ -14,20 +14,20 @@
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification {
   self.suUpdater = [SUUpdater new];
 
-  NSString* mode = @"checkForUpdatesInBackground";
+  //NSString* mode = @"checkForUpdatesInBackground";
 
-  NSArray* arguments = [[NSProcessInfo processInfo] arguments];
-  if ([arguments count] == 2) {
-    mode = arguments[1];
-  }
+  //NSArray* arguments = [[NSProcessInfo processInfo] arguments];
+  //if ([arguments count] == 2) {
+    //mode = arguments[1];
+  //}
 
-  if ([mode isEqualToString:@"checkForUpdatesStableOnly"]) {
-    [self checkForUpdatesStableOnly];
-  } else if ([mode isEqualToString:@"checkForUpdatesWithBetaVersion"]) {
-    [self checkForUpdatesWithBetaVersion];
-  } else {
-    [self checkForUpdatesInBackground];
-  }
+  //if ([mode isEqualToString:@"checkForUpdatesStableOnly"]) {
+    //[self checkForUpdatesStableOnly];
+  //} else if ([mode isEqualToString:@"checkForUpdatesWithBetaVersion"]) {
+    //[self checkForUpdatesWithBetaVersion];
+  //} else {
+    //[self checkForUpdatesInBackground];
+  //}
 }
 
 - (NSString*)getFeedURL:(BOOL)includingBetaVersions {

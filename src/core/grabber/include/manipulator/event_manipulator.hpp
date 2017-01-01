@@ -349,6 +349,22 @@ public:
               shikakariSrc_ = src;
               shikakariDst_ = dst;
               shikakari_ = true;
+          } else if (!cmdLeft && cmdRight && !shiftLeft && !shiftRight && !ctrl && !fn) {
+              ComplexKey first(false, false, true, true, false, false, false, krbn::key_code(29));
+              ComplexKey dst(false, false, opt, true, false, false, false, src.key_);
+
+              set_modifiers(src, keyboard_type, false);
+              set_modifiers(first, keyboard_type, true);
+              post_key(from_key_code, first.key_, keyboard_type, true, false);
+              post_key(from_key_code, first.key_, keyboard_type, false, false);
+              set_modifiers(first, keyboard_type, false);
+              set_modifiers(dst, keyboard_type, true);
+
+              to_key_code = dst.key_;
+
+              shikakariSrc_ = src;
+              shikakariDst_ = dst;
+              shikakari_ = true;
           }
       }
       

@@ -116,9 +116,6 @@ public:
                                     ComplexKey(false, false, false, false, false, false, false, krbn::key_code(43));
 
                                 // undo
-                                //ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(5))] =
-                                    //ComplexKey(false, false, false, false, false, false, false, krbn::key_code(5));
-
                                 ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(35))] =
                                     ComplexKey(false, false, true, true, false, false, false, krbn::key_code(29));
 
@@ -325,51 +322,8 @@ public:
           // Clear src's key.
           post_key(src.key_, src.key_, keyboard_type, false, false);
           
-          // Clear src's modifier.
-          if(src.commandLeft_){
-              post_modifier_flag_event(krbn::key_code(227), keyboard_type, false);
-          }
-          if(src.commandRight_){
-              post_modifier_flag_event(krbn::key_code(231), keyboard_type, false);
-          }
-          if(src.option_){
-              post_modifier_flag_event(krbn::key_code(226), keyboard_type, false);
-          }
-          if(src.shiftLeft_){
-              post_modifier_flag_event(krbn::key_code(225), keyboard_type, false);
-          }
-          if(src.shiftRight_){
-              post_modifier_flag_event(krbn::key_code(229), keyboard_type, false);
-          }
-          if(src.control_){
-              post_modifier_flag_event(krbn::key_code(224), keyboard_type, false);
-          }
-          if(src.fn_){
-              post_modifier_flag_event(krbn::key_code(4098), keyboard_type, false);
-          }
-          
-          // Set dst's modifier.
-          if(dst.commandLeft_){
-              post_modifier_flag_event(krbn::key_code(227), keyboard_type, true);
-          }
-          if(dst.commandRight_){
-              post_modifier_flag_event(krbn::key_code(231), keyboard_type, true);
-          }
-          if(dst.option_){
-              post_modifier_flag_event(krbn::key_code(226), keyboard_type, true);
-          }
-          if(dst.shiftLeft_){
-              post_modifier_flag_event(krbn::key_code(225), keyboard_type, true);
-          }
-          if(dst.shiftRight_){
-              post_modifier_flag_event(krbn::key_code(229), keyboard_type, true);
-          }
-          if(dst.control_){
-              post_modifier_flag_event(krbn::key_code(224), keyboard_type, true);
-          }
-          if(dst.fn_){
-              post_modifier_flag_event(krbn::key_code(4098), keyboard_type, true);
-          }
+          set_modifiers(src, keyboard_type, false);
+          set_modifiers(dst, keyboard_type, true);
           
           shikakari_ = false;
       }
@@ -383,66 +337,18 @@ public:
           const bool shiftRight = modifier_flag_manager_.pressed(krbn::modifier_flag::right_shift);
           const bool ctrl = modifier_flag_manager_.pressed(krbn::modifier_flag::left_control) || modifier_flag_manager_.pressed(krbn::modifier_flag::right_control);
           const bool fn = modifier_flag_manager_.pressed(krbn::modifier_flag::fn);
-          ComplexKey ck(cmdLeft, cmdRight, opt, shiftLeft, shiftRight, ctrl, fn, to_key_code);
-          for(std::map<ComplexKey, ComplexKey>::iterator it=ck2ck_.begin(); it!=ck2ck_.end(); it++){
-              ComplexKey src = it->first;
-              ComplexKey dst = it->second;
-              if(src==ck){
-                  // Clear src's modifier.
-                  if(src.commandLeft_){
-                      post_modifier_flag_event(krbn::key_code(227), keyboard_type, false);
-                  }
-                  if(src.commandRight_){
-                      post_modifier_flag_event(krbn::key_code(231), keyboard_type, false);
-                  }
-                  if(src.option_){
-                      post_modifier_flag_event(krbn::key_code(226), keyboard_type, false);
-                  }
-                  if(src.shiftLeft_){
-                      post_modifier_flag_event(krbn::key_code(225), keyboard_type, false);
-                  }
-                  if(src.shiftRight_){
-                      post_modifier_flag_event(krbn::key_code(229), keyboard_type, false);
-                  }
-                  if(src.control_){
-                      post_modifier_flag_event(krbn::key_code(224), keyboard_type, false);
-                  }
-                  if(src.fn_){
-                      post_modifier_flag_event(krbn::key_code(4098), keyboard_type, false);
-                  }
-                  
-                  // Set dst's modifier.
-                  if(dst.commandLeft_){
-                      post_modifier_flag_event(krbn::key_code(227), keyboard_type, true);
-                  }
-                  if(dst.commandRight_){
-                      post_modifier_flag_event(krbn::key_code(231), keyboard_type, true);
-                  }
-                  if(dst.option_){
-                      post_modifier_flag_event(krbn::key_code(226), keyboard_type, true);
-                  }
-                  if(dst.shiftLeft_){
-                      post_modifier_flag_event(krbn::key_code(225), keyboard_type, true);
-                  }
-                  if(dst.shiftRight_){
-                      post_modifier_flag_event(krbn::key_code(229), keyboard_type, true);
-                  }
-                  if(dst.control_){
-                      post_modifier_flag_event(krbn::key_code(224), keyboard_type, true);
-                  }
-                  if(dst.fn_){
-                      post_modifier_flag_event(krbn::key_code(4098), keyboard_type, true);
-                  }
-                  
-                  // Replace to_key_code with dst's key.
-                  to_key_code = dst.key_;
-                  
-                  shikakariSrc_ = src;
-                  shikakariDst_ = dst;
-                  shikakari_ = true;
-                  
-                  break;
-              }
+          ComplexKey src(cmdLeft, cmdRight, opt, shiftLeft, shiftRight, ctrl, fn, to_key_code);
+          if (ck2ck_.count(src) > 0) {
+              ComplexKey dst = ck2ck_.at(src);
+              set_modifiers(src, keyboard_type, false);
+              set_modifiers(dst, keyboard_type, true);
+
+              // Replace to_key_code with dst's key.
+              to_key_code = dst.key_;
+
+              shikakariSrc_ = src;
+              shikakariDst_ = dst;
+              shikakari_ = true;
           }
       }
       
@@ -893,6 +799,30 @@ private:
     bool shikakari_ = false;
     ComplexKey shikakariSrc_;
     ComplexKey shikakariDst_;
+
+  void set_modifiers(const ComplexKey &ck, krbn::keyboard_type keyboard_type, bool pressed) {
+      if(ck.commandLeft_){
+          post_modifier_flag_event(krbn::key_code(227), keyboard_type, pressed);
+      }
+      if(ck.commandRight_){
+          post_modifier_flag_event(krbn::key_code(231), keyboard_type, pressed);
+      }
+      if(ck.option_){
+          post_modifier_flag_event(krbn::key_code(226), keyboard_type, pressed);
+      }
+      if(ck.shiftLeft_){
+          post_modifier_flag_event(krbn::key_code(225), keyboard_type, pressed);
+      }
+      if(ck.shiftRight_){
+          post_modifier_flag_event(krbn::key_code(229), keyboard_type, pressed);
+      }
+      if(ck.control_){
+          post_modifier_flag_event(krbn::key_code(224), keyboard_type, pressed);
+      }
+      if(ck.fn_){
+          post_modifier_flag_event(krbn::key_code(4098), keyboard_type, pressed);
+      }
+  }
     //=== takahasix ============================================
     //=== takahasix ============================================
     //=== takahasix ============================================

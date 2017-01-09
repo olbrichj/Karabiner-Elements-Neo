@@ -116,8 +116,8 @@ public:
                                     ComplexKey(false, false, false, false, false, false, false, krbn::key_code(43));
 
                                 // undo
-                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(35))] =
-                                    ComplexKey(false, false, true, true, false, false, false, krbn::key_code(29));
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(5))] =
+                                    ComplexKey(true, false, false, false, false, false, false, krbn::key_code(5));
 
                                 //=== takahasix ============================================
                                 //=== takahasix ============================================

@@ -119,6 +119,10 @@ public:
                                 ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(5))] =
                                     ComplexKey(true, false, false, false, false, false, false, krbn::key_code(5));
 
+                                // insert
+                                ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(6))] =
+                                    ComplexKey(true, false, false, false, false, false, false, krbn::key_code(26));
+
                                 //=== takahasix ============================================
                                 //=== takahasix ============================================
                                 //=== takahasix ============================================

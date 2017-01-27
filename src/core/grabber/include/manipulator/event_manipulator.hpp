@@ -42,9 +42,9 @@ public:
                                 ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(9))] =
                                     ComplexKey(false, false, false, false, false, false, false, krbn::key_code::right_arrow);
                                 ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(4))] =
-                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::home);
+                                    ComplexKey(true, false, false, false, false, false, false, krbn::key_code::left_arrow);
                                 ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(10))] =
-                                    ComplexKey(false, false, false, false, false, false, false, krbn::key_code::end);
+                                    ComplexKey(true, false, false, false, false, false, false, krbn::key_code::right_arrow);
                                 ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(20))] =
                                     ComplexKey(false, false, false, false, false, false, false, krbn::key_code::page_up);
                                 ck2ck_[ComplexKey(false, true, false, false, false, false, false, krbn::key_code(23))] =

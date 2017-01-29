@@ -13,7 +13,7 @@ für macOS Sierra.
 
 Beta – sollten Fehler auftreten oder Unklarheiten bzgl. der Installation
 bestehen, mache bitte [ein Github Issue](https://github.com/jgosmann/Karabiner-Elements-Neo/issues)
-auf (wenn möglich auf Englisch).
+auf (auf Englisch oder Deutsch).
 
 ## Installation
 

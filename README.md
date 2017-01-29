@@ -13,7 +13,8 @@ the next generation Karabiner for macOS Sierra.
 ## Project Status
 
 Beta, please report any bugs or incomplete installation instructions as
-[GitHub issues](https://github.com/jgosmann/Karabiner-Elements-Neo/issues).
+[GitHub issues](https://github.com/jgosmann/Karabiner-Elements-Neo/issues). You
+may report issues in English or German.
 
 ## Installation
 
